@@ -1,0 +1,50 @@
+body {
+    font-family: Verdana, Geneva, sans-serif;
+}
+#heading {
+    border-bottom: 1px solid gray;
+    overflow: auto;
+    background: black;
+}
+h1 {
+    float: left;
+    font-size: 450%;
+    color: white;
+    margin-left: 5%;
+}
+#logo {
+    float: left;
+    margin-left: 5%;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+    width: 7%;
+    background: white;
+}
+.navbar {
+    float: right;
+    margin-right: 15%;
+    margin-top: 2%;
+    border: 1px solid gray;
+    background: black;
+}
+.navbar a {
+    border-left: 1px solid gray;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+#block3 {
+    margin-top: 2%;
+}
+#block4 {
+    margin-top: 2%;
+}
+#main {
+    padding: 2%;
+    border: 2px solid gray;
+    overflow: auto;
+    margin: 2% 2% 2% 2%;
+}
+h2 {
+    margin-left: 2%;
+}
