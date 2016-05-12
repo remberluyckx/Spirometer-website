@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="Statistics.css">
 
 </head>
-<body>
+<body ng-app="myApp">
 <div id="heading">
     <h1>Spirometer</h1>
     <img src="logo.png" id="logo">
@@ -23,15 +23,15 @@
     </div>
 </div>
 <h2>Averages of Spirometer users</h2>
-<div id="main">
+<div id="main" ng-controller="appController">
     <ul class="nav nav-tabs">
         <li role="presentation" class="dropdownGender">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                 Gender <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" id="dropdown-gender">
-                <li><a>Male</a></li>
-                <li><a>Female</a></li>
+                <li><a id="male">Male</a></li>
+                <li><a id="female">Female</a></li>
             </ul>
         </li>
         <li role="presentation" class="dropdownAge">
@@ -71,15 +71,8 @@
                 <li><a>Finland</a></li>
             </ul>
         </li>
-
     </ul>
-        <p>kjnpqenfiuenqriipqenrfineqipnnfqpiernfiqenrnfpeqfn
-            moeqrfoienqrnfieuqnfpnreinfeonrfernfelrnfleriujnff
-            kjnpqenfiuenqriipqenrfineqipnnfqpiernfiqenrnfpeqfn
-            moeqrfoienqrnfieuqnfpnreinfeonrfernfelrnfleriujnff
-            kjnpqenfiuenqriipqenrfineqipnnfqpiernfiqenrnfpeqfn
-            moeqrfoienqrnfieuqnfpnreinfeonrfernfelrnfleriujnff
-        </p>
+    <p></p>
 </div>
 <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src='Statistics.js'></script>

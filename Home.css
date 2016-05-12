@@ -33,17 +33,15 @@ h1 {
     font-size: 1.2em;
     font-weight: bold;
 }
-#block3 {
-    margin-top: 2%;
-}
-#block4 {
-    margin-top: 2%;
+
+#main-upper {
+    margin-bottom: 10%;
 }
 #main {
     padding: 2%;
     border: 2px solid gray;
-    overflow: auto;
     margin: 2% 2% 2% 2%;
+    overflow: auto;
 }
 h2 {
     margin-left: 2%;

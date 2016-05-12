@@ -38,7 +38,11 @@ h1 {
     border: 2px solid gray;
     overflow: auto;
     margin: 2% 2% 2% 2%;
+    height: 500px;
 }
 h2 {
     margin-left: 2%;
+}
+p {
+    margin-top: 3%;
 }

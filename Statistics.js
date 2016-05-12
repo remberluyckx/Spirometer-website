@@ -24,3 +24,7 @@ $(function()
         $("#dropdown-country").fadeOut("fast");
     });
 });
+
+$("#male").click(function(){
+    $("p").text("Male statistics: ");
+});
