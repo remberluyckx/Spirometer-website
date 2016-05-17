@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="Statistics.css">
-
 </head>
 <body ng-app="myApp">
 <div id="heading">
@@ -22,59 +21,41 @@
         </ul>
     </div>
 </div>
-<h2>Averages of Spirometer users</h2>
-<div id="main" ng-controller="appController">
-    <ul class="nav nav-tabs">
-        <li role="presentation" class="dropdownGender">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                Gender <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" id="dropdown-gender">
-                <li><a id="male">Male</a></li>
-                <li><a id="female">Female</a></li>
-            </ul>
-        </li>
-        <li role="presentation" class="dropdownAge">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                Age group <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" id="dropdown-age">
-                <li><a>0-12</a></li>
-                <li><a>13-18</a></li>
-                <li><a>19-29</a></li>
-                <li><a>30-39</a></li>
-                <li><a>40-49</a></li>
-                <li><a>50-59</a></li>
-                <li><a>60-69</a></li>
-                <li><a>70-79</a></li>
-                <li><a>80-89</a></li>
-                <li><a>90+</a></li>
-            </ul>
-        </li>
-        <li role="presentation" class="dropdownEthnicity">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                Ethnicity <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" id="dropdown-ethnicity">
-                <li><a>Caucasian</a></li>
-                <li><a>African American</a></li>
-                <li><a>Asian</a></li>
-                <li><a>Hispanic</a></li>
-            </ul>
-        </li>
-        <li role="presentation" class="dropdownCountry">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                Country <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" id="dropdown-country">
-                <li><a>Belgium</a></li>
-                <li><a>Finland</a></li>
-            </ul>
-        </li>
+<h2>Statistics of Spirometer users</h2>
+<div id="main">
+    <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+        <li class="active"><a href="#filter" data-toggle="tab">Filter</a></li>
+        <li><a href="#detail" data-toggle="tab">Detail</a></li>
     </ul>
-    <p></p>
+    <div id="my-tab-content" class="tab-content">
+        <div class="tab-pane" id="detail">
+            <h1>Detail</h1>
+            <p></p>
+        </div>
+        <div class="tab-pane active" id="filter">
+            <h1>Filter</h1>
+            <form>
+                <label>Age: </label><input type="number" id="age">
+                <label>Gender: </label>
+                <select>
+                <option value="man">Man</option>
+                <option value="woman">Woman</option>
+            </select>
+                <label>Ethnicity: </label>
+                <select>
+                    <option value="caucasian">Caucasian</option>
+                    <option value="asian">Asian</option>
+                    <option value="hispanic">Hispanic</option>
+                    <option value="african">African</option>
+                </select><br>
+                <label>Weight: </label><input type="number" id="weight">
+                <label>Length: </label><input type="number" id="length">
+            </form>
+        </div>
+    </div>
 </div>
 <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src='Statistics.js'></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
 </html>

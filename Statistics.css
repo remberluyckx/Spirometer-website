@@ -49,3 +49,23 @@ h2 {
 p {
     margin-top: 3%;
 }
+form {
+    margin: 2% 2% 2% 2%;
+    float: left;
+}
+#age, #weight, #length {
+    width: 10%;
+}
+.tab-content {
+    float: left;
+}
+#width {
+    margin-top: 3%;
+}
+#length {
+    margin-top: 3%;
+}
+input, select {
+    margin-left: 1%;
+    margin-right: 2%;
+}
