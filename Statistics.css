@@ -41,7 +41,7 @@ h1 {
     border: 2px solid gray;
     overflow: auto;
     margin: 2% 2% 2% 2%;
-    height: 500px;
+    height: 800px;
 }
 h2 {
     margin-left: 2%;
@@ -68,4 +68,10 @@ input, select {
 }
 #lower-form {
     margin-top: 4%;
+}
+#radio1, #radio2 {
+    margin-right: 2%;
+}
+#my-lowertab-content, #lowertabs {
+    float: left;
 }

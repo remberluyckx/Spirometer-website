@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="Statistics.css">
 </head>
-<body ng-app="myApp">
+<body>
 <div id="heading">
     <h1>Spiro Pro</h1>
     <img src="logo.png" id="logo">
@@ -23,17 +23,16 @@
 </div>
 <h2>Statistics of Spiro Pro users</h2>
 <div id="main">
-    <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+    <div id="uppercontent">
+    <ul id="uppertabs" class="nav nav-tabs" data-tabs="tabs">
         <li class="active"><a href="#filter" data-toggle="tab">Filter</a></li>
         <li><a href="#detail" data-toggle="tab">Detail</a></li>
     </ul>
-    <div id="my-tab-content" class="tab-content">
+    <div id="my-uppertab-content" class="tab-content">
         <div class="tab-pane" id="detail">
-            <h1>Detail</h1>
-            <p></p>
+
         </div>
         <div class="tab-pane active" id="filter">
-            <h1>Filter</h1>
             <form>
                 <label>Age: </label><input type="number" id="age">
                 <label>Gender: </label>
@@ -51,22 +50,37 @@
                 <label>Weight: </label><input type="number" id="weight">
                 <label>Length: </label><input type="number" id="length"><br>
                 <div id="lower-form">
-                <input type="radio" name="option" value="single"><label>Single stat</label>
+                <input type="radio" name="option" value="single" id="radio1"><label>Single stat</label>
                 <select>
                     <option value="fev">FEV</option>
                     <option value="fvc">FVC</option>
                 </select><br>
-                <input type="radio" name="option" value="graph"><label>Graph</label>
+                <input type="radio" name="option" value="graph" id="radio2"><label>Graph</label>
                 <select>
                     <option value="fev">FEV</option>
                     <option value="fvc">FVC</option>
-                </select>
+                </select>-
                 <select>
                     <option value="fev">FEV</option>
                     <option value="fvc">FVC</option>
                 </select>
                 </div>
             </form>
+            <div id="lowercontent">
+                <ul id="lowertabs" class="nav nav-tabs" data-tabs="tabs">
+                    <li class="active"><a href="#graph" data-toggle="tab">Graph</a></li>
+                    <li><a href="#list" data-toggle="tab">List</a></li>
+                </ul>
+                <div id="my-lowertab-content" class="tab-content">
+                    <div class="tab-pane active" id="graph">
+
+                    </div>
+                    <div class="tab-pane" id="list">
+
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
     </div>
 </div>
