@@ -41,7 +41,6 @@ h1 {
     border: 2px solid gray;
     overflow: auto;
     margin: 2% 2% 2% 2%;
-    height: 800px;
 }
 h2 {
     margin-left: 2%;
@@ -54,7 +53,7 @@ form {
     float: left;
 }
 #age, #weight, #length {
-    width: 10%;
+    width: 12%;
 }
 .tab-content {
     float: left;
@@ -74,4 +73,8 @@ input, select {
 }
 #my-lowertab-content, #lowertabs {
     float: left;
+}
+button {
+    margin-top: 4%;
+    margin-bottom: 4%;
 }
