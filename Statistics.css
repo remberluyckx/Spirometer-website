@@ -59,13 +59,13 @@ form {
 .tab-content {
     float: left;
 }
-#width {
-    margin-top: 3%;
-}
-#length {
+#width, #length {
     margin-top: 3%;
 }
 input, select {
     margin-left: 1%;
     margin-right: 2%;
+}
+#lower-form {
+    margin-top: 4%;
 }
