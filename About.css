@@ -19,6 +19,9 @@ h1 {
     margin-bottom: 0.5%;
     width: 7%;
     background: white;
+    border-radius: 20%;
+    -webkit-border-radius: 20%;
+    -moz-border-radius: 20%;
 }
 .navbar {
     float: right;
