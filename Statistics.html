@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8">
     <title>Spiro Pro - Statistics</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="Statistics.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.js"></script>
+    
+    
 </head>
-<body>
+<body ng-controller="AppCtrl">
 <div id="heading">
     <h1>Spiro Pro</h1>
     <img src="logo.png" id="logo">
@@ -30,7 +34,16 @@
     </ul>
     <div id="my-uppertab-content" class="tab-content">
         <div class="tab-pane" id="detail">
-
+            <input type="text" ng-model="idtoload"></input>
+            <button ng-click="loadid()">Load</button>
+            <div>
+                <div id="breathGraph" style="width:1000px;height:800px;"></div>
+            </div>
+            <div>
+                <h2> {{subj.last_name}}, {{subj.first_name}}</h2>
+                <h4> FEV: {{subjd.feV1 / 1000}} l</h4>
+                <h4> FVC: {{subjd.fvc / 1000}} l </h4>
+            </div>
         </div>
         <div class="tab-pane active" id="filter">
             <form>
@@ -113,7 +126,7 @@
                     <option value="fev">FEV</option>
                     <option value="fvc">FVC</option>
                 </select><br>
-                <button id="submit">Search</button>
+                <button id="submit" ng-click="search()">Search</button>
                 </div>
             </form>
             <div id="lowercontent">
@@ -123,7 +136,12 @@
                 </ul>
                 <div id="my-lowertab-content" class="tab-content">
                     <div class="tab-pane active" id="graph">
-
+                        <div id="statGraph" style="width:1000px;height:800px;"></div>
+                        <div>
+                            <h2> Query result</h2>
+                            <h4> FEV: {{subjd.feV1 / 1000}} l</h4>
+                            <h4> FVC: {{subjd.fvc / 1000}} l </h4>
+                        </div>
                     </div>
                     <div class="tab-pane" id="list">
 
@@ -137,5 +155,38 @@
 <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src='Statistics.js'></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script>
+        var TESTER = document.getElementById('breathGraph');
+                
+        var myApp = angular.module("myApp", []);
+        myApp.controller("AppCtrl", function($scope, $http) {
+            console.log("in controller");
+            $scope.search = function() {
+                var basequery = "SELECT " + $scope.primaryVal " FROM test a JOIN test b ON KEYS a.userID WHERE";
+                if ()
+            };
+            
+            
+            $scope.loadid = function() {
+                $http.get("/api/stat/getdata?id=" + $scope.idtoload).success(function (res) {
+                    console.log("retrieved usr data");
+                    console.log(res);
+                    $scope.subjd = res;
+                    $http.get("/api/stat/getdata?id="+res.userID).success(function(ress) {
+                        $scope.subj = ress;
+                    });
+                    $http.get("/api/stat/getdata?id="+res.rawDataID).success(function(ress) {
+                        var cumtot = [];
+                        $scope.subjr = ress;
+                        ress.data.reduce(function(a,b,i) { return cumtot[i] = a+b; },0);
+                        Plotly.plot( TESTER, [{
+                            x: cumtot,
+                            y: $scope.subjr.data
+                        }]);
+                    });
+                });
+            };
+        });
+    </script>
 </body>
 </html>
