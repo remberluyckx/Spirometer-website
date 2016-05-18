@@ -142,6 +142,12 @@
                     basequery = basequery + ' AND b.height BETWEEN ' + $scope.lengthLower + " AND " + $scope.lengthUpper;
                 }
                 basequery = basequery + ';';
+                var req = {
+                    qqq: basequery
+                };
+                $http.post("/api/stat/query", req).success(function(resp) {
+                    console.log(resp);
+                });
             };
             
             
