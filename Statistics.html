@@ -145,7 +145,7 @@
                 var req = {
                     qqq: basequery
                 };
-                $http.post("/api/stat/query", req).success(function(resp) {
+                $http.post("/api/stat/doquery", req).success(function(resp) {
                     console.log(resp);
                 });
             };
