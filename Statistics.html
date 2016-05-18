@@ -47,45 +47,45 @@
         </div>
         <div class="tab-pane active" id="filter">
             <form>
-                <input type="checkbox" value="age">
+                <input type="checkbox" value="age" ng-model="ageEnabled">
                 <label>Age: </label>
                 <input type="number" id="ageLower" ng-model="ageLower">-
                 <input type="number" id="ageUpper" ng-model="ageUpper">
-                <input type="checkbox" value="gender">
+                <input type="checkbox" value="gender" ng-model="genderEnabled">
                 <label>Gender: </label>
-                <select>
-                <option value="man">Man</option>
-                <option value="woman">Woman</option>
+                <select ng-model="genderPick">
+                <option value="male">Man</option>
+                <option value="female">Woman</option>
             </select>
-                <input type="checkbox" value="ethnicity">
+                <input type="checkbox" value="ethnicity" ng-model="ethEnabled">
                 <label>Ethnicity: </label>
-                <select>
-                    <option value="caucasian">Caucasian</option>
-                    <option value="asian">Asian</option>
-                    <option value="hispanic">Hispanic</option>
-                    <option value="african">African</option>
+                <select ng-model="ethnicityPick">
+                    <option value="white">Caucasian</option>
+                    <option value="other">Asian</option>
+                    <option value="latino">Hispanic</option>
+                    <option value="black">African</option>
                 </select>
-                <input type="checkbox" value="weight">
+                <input type="checkbox" value="weight" ng-model="weightEnabled">
                 <label>Weight(kg): </label>
                 <input type="number" id="weightLower" ng-model="weightLower">-
                 <input type="number" id="weightUpper" ng-model="weightUpper">
-                <input type="checkbox" value="length">
+                <input type="checkbox" value="length" ng-model="lengthEnabled">
                 <label>Length(mm): </label>
                 <input type="number" id="lengthLower" ng-model="lengthLower">-
                 <input type="number" id="lengthUpper" ng-model="lengthUpper">
                 <div id="lower-form">
-                <input type="radio" name="option" value="single" id="radio1"><label>Single stat</label>
-                <select>
-                    <option value="fev">FEV</option>
+                <input type="radio" name="option" value="single" id="radio1" ng-model="singleStatEnabled"><label>Single stat</label>
+                <select ng-model="primaryVal">
+                    <option value="feV1">FEV</option>
                     <option value="fvc">FVC</option>
                 </select>
                 <input type="radio" name="option" value="graph" id="radio2"><label>Graph</label>
                 <select>
-                    <option value="fev">FEV</option>
+                    <option value="feV1">FEV</option>
                     <option value="fvc">FVC</option>
                 </select>-
                 <select>
-                    <option value="fev">FEV</option>
+                    <option value="feV1">FEV</option>
                     <option value="fvc">FVC</option>
                 </select><br>
                 <button id="submit" ng-click="search()">Search</button>
@@ -124,7 +124,28 @@
         myApp.controller("AppCtrl", function($scope, $http) {
             console.log("in controller");
             $scope.search = function() {
-                var basequery = "SELECT " + $scope.primaryVal + " FROM test a JOIN test b ON KEYS a.userID WHERE";
+                var basequery = "SELECT " + $scope.primaryVal + " FROM test a JOIN test b ON KEYS a.userID WHERE TRUE";
+                if ($scope.ageEnabled)
+                {
+                    basequery = basequery + ' AND DATE_DIFF_MILLIS(CLOCK_MILLIS(), STR_TO_MILLIS(b.birthDate), "years") BETWEEN '
+                                + $scope.ageLower + " AND " + $scope.ageUpper;
+                }
+                if ($scope.genderEnabled)
+                {
+                    basequery = basequery + ' AND sex = ' + $scope.genderPick;
+                }
+                if ($scope.ethEnabled)
+                {
+                    basequery = basequery + ' AND race = ' + $scope.ethnicityPick;
+                }
+                if ($scope.weightEnabled)
+                {
+                    basequery = basequery + ' AND weight BETWEEN ' + $scope.weightLower + " AND " + $scope.weightUpper;
+                }
+                if ($scope.lengthEnabled)
+                {
+                    basequery = basequery + ' AND length BETWEEN ' + $scope.lengthLower + " AND " + $scope.lengthUpper;
+                }
             };
             
             
