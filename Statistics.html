@@ -125,27 +125,23 @@
             console.log("in controller");
             $scope.search = function() {
                 var basequery = "SELECT " + $scope.primaryVal + " FROM test a JOIN test b ON KEYS a.userID WHERE TRUE";
-                if ($scope.ageEnabled)
-                {
-                    basequery = basequery + ' AND DATE_DIFF_MILLIS(CLOCK_MILLIS(), STR_TO_MILLIS(b.birthDate), "years") BETWEEN '
-                                + $scope.ageLower + " AND " + $scope.ageUpper;
-                }
                 if ($scope.genderEnabled)
                 {
-                    basequery = basequery + ' AND sex = ' + $scope.genderPick;
+                    basequery = basequery + ' AND b.sex = "' + $scope.genderPick + '"';
                 }
                 if ($scope.ethEnabled)
                 {
-                    basequery = basequery + ' AND race = ' + $scope.ethnicityPick;
+                    basequery = basequery + ' AND b.race = ' + $scope.ethnicityPick + '"';
                 }
                 if ($scope.weightEnabled)
                 {
-                    basequery = basequery + ' AND weight BETWEEN ' + $scope.weightLower + " AND " + $scope.weightUpper;
+                    basequery = basequery + ' AND b.weight BETWEEN ' + $scope.weightLower + " AND " + $scope.weightUpper;
                 }
                 if ($scope.lengthEnabled)
                 {
-                    basequery = basequery + ' AND length BETWEEN ' + $scope.lengthLower + " AND " + $scope.lengthUpper;
+                    basequery = basequery + ' AND b.height BETWEEN ' + $scope.lengthLower + " AND " + $scope.lengthUpper;
                 }
+                basequery = basequery + ';';
             };
             
             
