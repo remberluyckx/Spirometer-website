@@ -76,8 +76,8 @@
                 <div id="lower-form">
                 <input type="radio" name="option" value="single" id="radio1" ng-model="singleStatEnabled"><label>Single stat</label>
                 <select ng-model="primaryVal">
-                    <option value="feV1">FEV</option>
-                    <option value="fvc">FVC</option>
+                    <option value="array_agg(a.feV1)">FEV</option>
+                    <option value="array_agg(a.fvc)">FVC</option>
                 </select>
                 <input type="radio" name="option" value="graph" id="radio2"><label>Graph</label>
                 <select>
@@ -131,7 +131,7 @@
                 }
                 if ($scope.ethEnabled)
                 {
-                    basequery = basequery + ' AND b.race = ' + $scope.ethnicityPick + '"';
+                    basequery = basequery + ' AND b.race = "' + $scope.ethnicityPick + '"';
                 }
                 if ($scope.weightEnabled)
                 {
